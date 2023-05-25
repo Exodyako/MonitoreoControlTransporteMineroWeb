@@ -1,0 +1,6 @@
+{
+    "/MonitoreoControlTransporteMinero/public/": {
+        "target":"http://localhost"
+    }
+    
+}

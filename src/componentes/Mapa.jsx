@@ -1,18 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { render } from 'react-dom';
 import './Mapa.css';
-import { MapContainer,TileLayer,Marker,Popup} from 'react-leaflet';
+import { MapContainer,TileLayer,Marker,Popup, Circle  } from 'react-leaflet';
 import Marca from "./Marca";
+import axios from 'axios';
 
- function Mapa (){      
+ function Mapa (){  
+  
+  const [puntosInteres,setPuntosInteres] = useState([]);
+  
+  useEffect(()=>{
+    axios.get("/MonitoreoControlTransporteMinero/public/punto-interes",
+    {headers:{"Accept":"application/json","Content-Type":"application/json"}})
+    .then((puntosInteress)=>{  
+      console.log(puntosInteress.data)       
+     setPuntosInteres(puntosInteress.data);
+    });
+  },[]);
     return (
-      <MapContainer center={[7.903866, -72.500559]} zoom={15} scrollWheelZoom={false}>
-      <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marca/>
-      </MapContainer>
-    );
+      <>
+         <MapContainer  zoom={20} scrollWheelZoom={false}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {puntosInteres.map(punto=>(            
+                <Marca key={punto.pi_id}  punto={punto}/>
+              ))
+            }      
+         </MapContainer>      
+      </>
+    );    
 };
 
 
