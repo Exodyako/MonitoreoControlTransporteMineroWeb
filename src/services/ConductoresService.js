@@ -1,8 +1,11 @@
 import axios from "axios";
-
+import {header}  from "./Headers";
 export async function listar(){
-    const respuesta = await axios.get("/MonitoreoControlTransporteMinero/public/trabajador",
-    {headers:{"Accept":"application/json","Content-Type":"application/json"}});
+    
+    const respuesta = await axios.get(`${import.meta.env.VITE_API}/trabajador`,
+    {
+       headers:{...header()}
+    });
     const conductores = respuesta.data;
     return conductores;
 }

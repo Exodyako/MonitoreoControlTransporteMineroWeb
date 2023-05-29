@@ -1,80 +1,165 @@
-#root footer.footer-fixed{
-     position: fixed;
-    bottom:0;
-    height: 25vh; 
-    width: 100vw;
-    z-index: 2000;
-    background-color:#023260;
+:root{
+    --check-color-active: #3dfd0d;
+    --check-color-default:#e03409;
+    --btn-group-main:#68FF21;
+    --btn-group-hover:#58CD20;
 }
 
-body.sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
-    height:75vh;
-}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .sb-sidenav-menu{
+    scrollbar-width: auto;
+    scrollbar-color: #6e6868 #212529;
+  }
 
+  /* Chrome, Edge, and Safari */
+  .sb-sidenav-menu::-webkit-scrollbar {
+    width: 11px;
+  }
 
+  .sb-sidenav-menu::-webkit-scrollbar-track {
+    background: #22272b;
+  }
 
-@media(max-width:1440px){
-    #root{        
-        min-height: 1100px;
-    }
+  .sb-sidenav-menu::-webkit-scrollbar-thumb {
+    background-color: #6e6868;
+    border-radius: 10px;
+    border: 3px solid #22272b;
+  }
+/* ===== Scrollbar CSS ===== */
 
-    .footer-img{
-        width: 30px;
-        height: 30px;
-    }
+/* ===== MAPA* ===== */
+.leaflet-container{
+    /* width: 730px; */
+    height: 500px;
+    max-width: 100%;
+    min-height: 100%;
     
-    .elemento-footer>:is(h2,p){
-       font-size: 20px;  
-    }
-
-    .elemento-footer>p{
-        font-size: 14px;  
-    }
-
-    .container-fluid>.row>h2{
-        font-size: 24px;
-    }
-    
-    .elemento-footer :is(h2,p) img{
-        margin-right: 10px;
-        margin-bottom: 0;    
-    }
 }
-    
-@media(max-width:1024px){
-    #root{        
-        min-height: 1400px;
-    }
+#map-container{
+    padding: 0;
+}
+/* ===== MAPA ===== */
 
-    .elemento-footer>:is(h2,p){
-        font-size: 15px;  
-     }
- 
-     .elemento-footer>p{
-         font-size: 14px;  
-     }
- 
-     .container-fluid>.row>h2{
-         font-size: 24px;
-     }
+
+.card-body.card-camiones{
+    padding: 0;
+}
+.card-img-camionero{
+    border-radius: 100px;
+    background-color: black;
+    width: 120px;
+}
+.card-parrafos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-@media(max-height:1000px){
-    #root{        
-        min-height: 1120px;
-    }
-}
-    
-@media(max-height:500px){
-    body.sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
-        height:100vh;
-    }
-
-    footer{
-        visibility: hidden;
-    }
+.card-parrafo{
+    margin-bottom: 0;
 }
 
-div#layoutSidenav_nav div.nav a.nav-link{
-    color: white;
+.card-activo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-check.form-check-input:checked{    
+    background-color: var(--check-color-default);
+    border-color:  var(--check-color-default);
+}
+
+.card-check.form-check-input:checked.active{
+    background-color: var(--check-color-active);
+    border-color: var(--check-color-active);
+}
+.container-fluid:first-child,.btn-group.col-12.row{
+    margin: 0;
+    padding: 0;    
+    height: 100px;
+
+}
+
+
+.btn-group.col-12.row  .btn.btn-success{
+    border-radius: 0;
+    background-color: var(--btn-group-main);
+    border-color: var(--btn-group-main);
+}
+.btn-group.col-12.row  .btn.btn-success:hover{    
+    background-color: var(--btn-group-hover);
+    border-color: var(--btn-group-hover);
+}
+.btn-group.col-12.row  .btn.btn-success.active{
+    background-color: var(--btn-group-hover);
+    border-color: var(--btn-group-hover);
+}
+
+.header-icono{
+    max-width: 50px;
+    max-height: 50px;
+}
+.card-img-perfil{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.img-perfil{
+    border-radius: 100px;
+    background-color: black;
+    width: 110px;
+}
+.perfil-btb-img{
+    max-width: 30px;
+    max-height: 30px;
+        
+}
+.perfil-btb-img.white{
+filter: invert(100%);
+}
+
+.text-btn-perfil.text-center.col-4{
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.btn-group button{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+@media (max-width:1024px){  
+    .btn-group button{
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+@media (max-width:768px){
+    .container-fluid:first-child,.btn-group.col-12.row{       
+        height: 200px;
+    }   
+    .btn-group button{
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+@media (max-width:425px){
+    .container-fluid:first-child,.btn-group.col-12.row{       
+        height: 200px;
+    }   
+    .btn-group button{
+        font-size: 0px;
+        font-weight: bold;
+    }
+}
+
+.btn-group button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    
 }

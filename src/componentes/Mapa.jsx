@@ -4,16 +4,17 @@ import './Mapa.css';
 import { MapContainer,TileLayer,Marker,Popup, Circle  } from 'react-leaflet';
 import Marca from "./Marca";
 import axios from 'axios';
+import { header } from '../services/Headers';
 
  function Mapa (){  
   
   const [puntosInteres,setPuntosInteres] = useState([]);
   
   useEffect(()=>{
-    axios.get("/MonitoreoControlTransporteMinero/public/punto-interes",
-    {headers:{"Accept":"application/json","Content-Type":"application/json"}})
+    axios.get(import.meta.env.VITE_API+"/punto-interes",
+    {headers:{...header()}})
     .then((puntosInteress)=>{  
-      console.log(puntosInteress.data)       
+      console.log(puntosInteress.data)      
      setPuntosInteres(puntosInteress.data);
     });
   },[]);

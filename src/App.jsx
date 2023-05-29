@@ -3,10 +3,10 @@ import Header from './componentes/layout/header/Header';
 import SideMenu from './componentes/layout/sideMenu/SideMenu';
 import Footer from './componentes/layout/footer/Footer';
 import Nav from './componentes/main/Nav';
-import MapaContainer from './componentes/main/MapaContainer';
+// import MapaContainer from './componentes/main/MapaContainer';
 import Carousel from "./componentes/carousel/Carousel";
-import "./../public/css/style.css";
 import './App.css'
+import { Outlet } from 'react-router-dom';
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         <Carousel/>
         <Nav/>
         <div className="container-fluid" style={{padding:0}}>
-          <MapaContainer/>
+          <Outlet/>
         </div>
       </main>
       {/* FOOTER */}

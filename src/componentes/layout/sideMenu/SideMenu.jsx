@@ -1,5 +1,17 @@
 import SidePerfil from "./SidePerfil";
+import {logout as logoutService} from "./../../../services/UsuarioService";
+import { useNavigate } from "react-router-dom";
 function SideMenu(){
+
+    const navigate = useNavigate();
+
+    const logout = async (evt)=>{
+        evt.preventDefault();
+        const ok = await logoutService();
+        if(ok){
+            navigate("/login");        
+        }
+    }
     return (
 
 <div id="layoutSidenav_nav">
@@ -16,7 +28,7 @@ function SideMenu(){
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 Ayuda
                             </a>
-                            <a className="nav-link" href="index.html">
+                            <a onClick={logout} className="nav-link" href="#">
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 Cerrar Sesión
                             </a>                            
